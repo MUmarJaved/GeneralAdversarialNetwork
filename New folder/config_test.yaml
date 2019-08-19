@@ -1,0 +1,23 @@
+data:
+  dir: scratch
+  preprocess: false
+  review_vocab: comb_vocab_pruned.pkl
+  summary_vocab: comb_vocab_pruned.pkl
+  test: {batch_size: 32, jsonfile: labelled.json}
+  weights: [4.0, 4.0, 1.0]
+debug: false
+mode: test
+model:
+  params: {emb_dim: 100, rnn_hidden_dim: 50, rnn_type: gru,
+    use_summ_mlp: true, use_summary: true, word_emb_dim: 200}
+  reload: model_best.pth.tar
+optim:
+  class: sgd
+  params: {lr: 0.01, weight_decay: 0.0005}
+  scheduler: {factor: 0.4, patience: 3}
+prefix: han
+save_dir: ""
+seed: 23443521
+training: {n_epochs: 5, start_from_checkpoint: true}
+use_gpu: true
+verbose: true
